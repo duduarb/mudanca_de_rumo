@@ -8,47 +8,77 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <div class="container">
+            <h1 class="logo">Minha Decisão</h1>
+            <button id="theme-toggle" aria-label="Alternar modo escuro">
+                <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon hidden"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            </button>
+        </div>
+    </header>
+
     <nav>
         <ul>
-            <li><a href="#inicio">Por que troquei de curso?</a></li>
-            <li><a href="#comparacao">Comparando os cursos</a></li>
-            <li><a href="#restrita">Área restrita</a></li>
+            <li><a href="#inicio" class="active" data-section="inicio">Por que troquei de curso?</a></li>
+            <li><a href="#comparacao" data-section="comparacao">Comparando os cursos</a></li>
+            <li><a href="#restrita" data-section="restrita">Área restrita</a></li>
         </ul>
     </nav>
 
-    <section id="inicio">
-        <h1>Olá, troquei de curso!</h1>
-        <p>O ano de 2024 foi bem difícil para mim. Me vi dentro de um curso pelo qual já não tinha mais interesse, após passar semestres repetindo matérias. Por muito tempo, achei que meu desempenho ruim era consequência de problemas pessoais. Pode ser que isso tenha influenciado, mas, no fim das contas, o maior motivo era a falta de interesse.</p>
-        <p>Sempre tive contato com amigos que trabalham na área de programação e, inclusive, essa sempre foi a área que eu quis seguir. Mesmo estudando engenharia eletrônica, minha vontade nunca foi ser engenheiro, mas sim atuar na área da programação. Como mencionei antes, acabei reprovando em diversas matérias, e o curso, que deveria terminar em 2027, só seria concluído no fim de 2029. Algo desanimador, considerando que minha intenção não era seguir um caminho que exigisse um diploma de engenharia.</p>
-        <p>Além disso, outras frustrações pesavam sobre mim: ainda não tinha um emprego, não tinha minha própria renda e não conseguia estágio, justamente por não estar indo bem no curso. Tudo isso me fazia sentir um fracassado profissionalmente. Quando 2024 estava chegando ao fim, decidi mudar. De dezembro até o final de janeiro, refleti muito e cheguei à conclusão de que não valeria a pena continuar em engenharia. Eu já não sentia mais vontade de estar no curso, ia para as aulas por obrigação, não por interesse genuíno. Como não fiz o ENEM, não conseguiria ingressar em outro curso público, então minha única opção era pagar por um. Mas, para isso, eu precisava primeiro conseguir um emprego. Foi aí que comecei a procurar e encontrei um.</p>
+    <main>
+        <section id="inicio" class="section-active">
+            <div class="container">
+                <h1>Olá, troquei de curso!</h1>
+                <p>O ano de 2024 foi bem difícil para mim. Me vi dentro de um curso pelo qual já não tinha mais interesse, após passar semestres repetindo matérias. Por muito tempo, achei que meu desempenho ruim era consequência de problemas pessoais. Pode ser que isso tenha influenciado, mas, no fim das contas, o maior motivo era a falta de interesse.</p>
+                <p>Sempre tive contato com amigos que trabalham na área de programação e, inclusive, essa sempre foi a área que eu quis seguir. Mesmo estudando engenharia eletrônica, minha vontade nunca foi ser engenheiro, mas sim atuar na área da programação. Como mencionei antes, acabei reprovando em diversas matérias, e o curso, que deveria terminar em 2027, só seria concluído no fim de 2029. Algo desanimador, considerando que minha intenção não era seguir um caminho que exigisse um diploma de engenharia.</p>
+                <p>Além disso, outras frustrações pesavam sobre mim: ainda não tinha um emprego, não tinha minha própria renda e não conseguia estágio, justamente por não estar indo bem no curso. Tudo isso me fazia sentir um fracassado profissionalmente. Quando 2024 estava chegando ao fim, decidi mudar. De dezembro até o final de janeiro, refleti muito e cheguei à conclusão de que não valeria a pena continuar em engenharia. Eu já não sentia mais vontade de estar no curso, ia para as aulas por obrigação, não por interesse genuíno. Como não fiz o ENEM, não conseguiria ingressar em outro curso público, então minha única opção era pagar por um. Mas, para isso, eu precisava primeiro conseguir um emprego. Foi aí que comecei a procurar e encontrei um.</p>
 
-        <h2>E qual curso eu escolhi? Qual caminho vou seguir?</h2>
-        <p>Como já mencionei, quero atuar na área de programação. O curso que escolhi foi Análise e Desenvolvimento de Sistemas, um tecnólogo (curso superior) com duração de quatro semestres (dois anos). Com ele, poderei seguir exatamente a área que desejo: ser programador. Fazia mais sentido investir em um curso de dois anos do que permanecer em um de cinco (que, no meu caso, se tornaria sete ou oito anos). Esse foi mais um fator que me levou a tomar essa decisão.</p>
-        <p>E o que é programação? O que significa ser programador? De forma simples, este próprio site que você está acessando foi programado. Eu mesmo o desenvolvi. Isso é programação. Criei este site para que vocês pudessem ver, na prática, o novo caminho que escolhi seguir. É um site simples, mas é o meu primeiro, criado do zero por mim, com todos os meus acertos e erros.</p>
-    </section>
+                <h2>E qual curso eu escolhi? Qual caminho vou seguir?</h2>
+                <p>Como já mencionei, quero atuar na área de programação. O curso que escolhi foi Análise e Desenvolvimento de Sistemas, um tecnólogo (curso superior) com duração de quatro semestres (dois anos). Com ele, poderei seguir exatamente a área que desejo: ser programador. Fazia mais sentido investir em um curso de dois anos do que permanecer em um de cinco (que, no meu caso, se tornaria sete ou oito anos). Esse foi mais um fator que me levou a tomar essa decisão.</p>
+                <p>E o que é programação? O que significa ser programador? De forma simples, este próprio site que você está acessando foi programado. Eu mesmo o desenvolvi. Isso é programação. Criei este site para que vocês pudessem ver, na prática, o novo caminho que escolhi seguir. É um site simples, mas é o meu primeiro, criado do zero por mim, com todos os meus acertos e erros.</p>
+            </div>
+        </section>
 
-    <section id="comparacao">
+        <section id="comparacao" class="hidden">
+            <div class="container">
+                <div class="header">
+                    <h1>Comparação dos Cursos</h1>
+                </div>
+            
+                <div class="cards" id="cards-container">
+                    <!-- Cards will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section id="restrita" class="hidden">
+            <div class="container">
+                <h1>Área apenas para meus pais</h1>
+                <div class="login-area" id="login-form">
+                    <p>Esta área contém uma mensagem especial para meus pais. Por favor, digite a senha para acessar.</p>
+                    <div class="form-group">
+                        <label for="password">Senha:</label>
+                        <input type="password" id="password" placeholder="Digite a senha">
+                        <p id="error-message" class="error-message"></p>
+                    </div>
+                    <button id="login-button" class="btn">Acessar</button>
+                </div>
+                
+                <div id="restricted-content" class="hidden">
+                    <p>Olá, pais! <br>
+                    Sei que a mudança de curso pode ter levantado algumas questões e preocupações, e foi pensando nisso que criei esta área para explicar com mais profundidade os pontos que sei que podem ser as maiores dúvidas para vocês. Aqui, vou focar nas questões que imagino que possam passar pela cabeça de cada um e como estou lidando com elas.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
         <div class="container">
-            <div class="header">
-              <h1>Comparação dos Cursos</h1>
-            </div>
-        
-            <div class="cards" id="cards-container">
-              <!-- Cards will be inserted here by JavaScript -->
-            </div>
-          </div>
-        
-    </section>
+            <p>Feito com ❤️ para meus pais</p>
+        </div>
+    </footer>
 
-    <section id="restrita">
-        <h1>Área apenas para meus pais.</h1>
-        <p>Aqui será uma área privada com senha, onde apenas meus pais poderá ler oque vou escrever. O objetivo é focar neles, e responder possíveis 
-            preocupações que sei que vão ter.</p>
-        <p>Olá, pais! <br>
-
-            Sei que a mudança de curso pode ter levantado algumas questões e preocupações, e foi pensando nisso que criei esta área para explicar com mais profundidade os pontos que sei que podem ser as maiores dúvidas para vocês. Aqui, vou focar nas questões que imagino que possam passar pela cabeça de cada um e como estou lidando com elas..</p>
-    </section>
-
-    <script src="script.js"></script>
+    <script src="javascript.js"></script>
 </body>
 </html>

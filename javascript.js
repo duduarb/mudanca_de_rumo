@@ -1,4 +1,53 @@
 document.addEventListener('DOMContentLoaded', function() {
+  // Verificar preferência de tema
+  const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  
+  // Verificar se há uma preferência salva
+  const savedTheme = localStorage.getItem('theme');
+  
+  // Aplicar tema inicial
+  if (savedTheme === 'dark' || (!savedTheme && prefersDarkMode)) {
+    document.body.classList.add('dark-mode');
+    document.getElementById('moon-icon').classList.add('hidden');
+    document.getElementById('sun-icon').classList.remove('hidden');
+  }
+  
+  // Alternar tema
+  const themeToggle = document.getElementById('theme-toggle');
+  themeToggle.addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+    
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    
+    // Alternar ícones
+    document.getElementById('moon-icon').classList.toggle('hidden', isDarkMode);
+    document.getElementById('sun-icon').classList.toggle('hidden', !isDarkMode);
+  });
+  
+  // Navegação por abas
+  const navLinks = document.querySelectorAll('nav a');
+  const sections = document.querySelectorAll('section');
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Remover classe active de todos os links
+      navLinks.forEach(link => link.classList.remove('active'));
+      
+      // Adicionar classe active ao link clicado
+      this.classList.add('active');
+      
+      // Esconder todas as seções
+      sections.forEach(section => section.classList.add('hidden'));
+      
+      // Mostrar a seção correspondente
+      const targetId = this.getAttribute('data-section');
+      document.getElementById(targetId).classList.remove('hidden');
+    });
+  });
+  
   // Course data
   const courses = [
     {
@@ -23,34 +72,32 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   ];
 
+  // Renderizar cards
   const cardsContainer = document.getElementById('cards-container');
-  if (!cardsContainer) return;  // Verifica se o container existe antes de continuar.
-
-  // Function to render the cards
-  function renderCards() {
-    // Clear the container
+  if (cardsContainer) {
+    // Limpar o container
     cardsContainer.innerHTML = '';
     
-    // Create and append cards
+    // Criar e adicionar cards
     courses.forEach(course => {
-      // Create card element
+      // Criar elemento do card
       const card = document.createElement('div');
       card.classList.add('card', course.color);
 
-      // Create card content
+      // Criar conteúdo do card
       const cardContent = document.createElement('div');
       cardContent.classList.add('card-content');
 
-      // Create card header
+      // Criar cabeçalho do card
       const cardHeader = document.createElement('div');
       cardHeader.classList.add('card-header');
       cardHeader.innerHTML = `${course.icon}<h2 class="card-title">${course.title}</h2>`;
       
-      // Create card details
+      // Criar detalhes do card
       const cardDetails = document.createElement('div');
       cardDetails.classList.add('card-details');
       
-      // Creating detail items
+      // Criar itens de detalhes
       const details = [
         { label: 'Duração', value: course.duration, icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="detail-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>' },
         { label: 'Foco do Curso', value: course.focus, icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="detail-icon"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>' },
@@ -87,18 +134,50 @@ document.addEventListener('DOMContentLoaded', function() {
         cardDetails.appendChild(detailItem);
       });
 
-      // Append header and details to card content
+      // Adicionar cabeçalho e detalhes ao conteúdo do card
       cardContent.appendChild(cardHeader);
       cardContent.appendChild(cardDetails);
 
-      // Append card content to the card
+      // Adicionar conteúdo ao card
       card.appendChild(cardContent);
 
-      // Append card to the container
+      // Adicionar card ao container
       cardsContainer.appendChild(card);
     });
   }
-
-  // Initial render
-  renderCards();
+  
+  // Área restrita com senha
+  const loginButton = document.getElementById('login-button');
+  const passwordInput = document.getElementById('password');
+  const errorMessage = document.getElementById('error-message');
+  const loginForm = document.getElementById('login-form');
+  const restrictedContent = document.getElementById('restricted-content');
+  
+  // Senha simples (apenas para demonstração)
+  // Em um site real, você nunca deve armazenar senhas diretamente no JavaScript
+  const correctPassword = "meuspais";
+  
+  if (loginButton) {
+    loginButton.addEventListener('click', function() {
+      if (passwordInput.value === correctPassword) {
+        // Senha correta
+        loginForm.classList.add('hidden');
+        restrictedContent.classList.remove('hidden');
+        errorMessage.style.display = 'none';
+      } else {
+        // Senha incorreta
+        errorMessage.textContent = 'Senha incorreta. Tente novamente.';
+        errorMessage.style.display = 'block';
+      }
+    });
+  }
+  
+  // Permitir enviar com Enter
+  if (passwordInput) {
+    passwordInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        loginButton.click();
+      }
+    });
+  }
 });
