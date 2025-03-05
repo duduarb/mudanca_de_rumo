@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // Course data
   const courses = [
     {
       title: "Engenharia Eletrônica",
@@ -72,32 +71,27 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   ];
 
-  // Renderizar cards
+  
   const cardsContainer = document.getElementById('cards-container');
   if (cardsContainer) {
-    // Limpar o container
+   
     cardsContainer.innerHTML = '';
     
-    // Criar e adicionar cards
     courses.forEach(course => {
-      // Criar elemento do card
+     
       const card = document.createElement('div');
       card.classList.add('card', course.color);
 
-      // Criar conteúdo do card
       const cardContent = document.createElement('div');
       cardContent.classList.add('card-content');
 
-      // Criar cabeçalho do card
       const cardHeader = document.createElement('div');
       cardHeader.classList.add('card-header');
       cardHeader.innerHTML = `${course.icon}<h2 class="card-title">${course.title}</h2>`;
       
-      // Criar detalhes do card
       const cardDetails = document.createElement('div');
       cardDetails.classList.add('card-details');
       
-      // Criar itens de detalhes
       const details = [
         { label: 'Duração', value: course.duration, icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="detail-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>' },
         { label: 'Foco do Curso', value: course.focus, icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="detail-icon"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>' },
@@ -134,49 +128,34 @@ document.addEventListener('DOMContentLoaded', function() {
         cardDetails.appendChild(detailItem);
       });
 
-      // Adicionar cabeçalho e detalhes ao conteúdo do card
       cardContent.appendChild(cardHeader);
       cardContent.appendChild(cardDetails);
 
-      // Adicionar conteúdo ao card
       card.appendChild(cardContent);
 
-      // Adicionar card ao container
       cardsContainer.appendChild(card);
     });
   }
   
   // Área restrita com senha
   const loginButton = document.getElementById('login-button');
-  const passwordInput = document.getElementById('password');
-  const errorMessage = document.getElementById('error-message');
-  const loginForm = document.getElementById('login-form');
-  const restrictedContent = document.getElementById('restricted-content');
-  
-  // Senha simples (apenas para demonstração)
-  // Em um site real, você nunca deve armazenar senhas diretamente no JavaScript
-  const correctPassword = "meuspais";
-  
-  if (loginButton) {
-    loginButton.addEventListener('click', function() {
-      if (passwordInput.value === correctPassword) {
-        // Senha correta
-        loginForm.classList.add('hidden');
-        restrictedContent.classList.remove('hidden');
-        errorMessage.style.display = 'none';
-      } else {
-        // Senha incorreta
-        errorMessage.textContent = 'Senha incorreta. Tente novamente.';
-        errorMessage.style.display = 'block';
-      }
-    });
-  }
-  
-  // Permitir enviar com Enter
-  if (passwordInput) {
-    passwordInput.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        loginButton.click();
+const passwordInput = document.getElementById('password');
+const errorMessage = document.getElementById('error-message');
+const loginForm = document.getElementById('login-form');
+const restrictedContent = document.getElementById('restricted-content');
+
+if (loginButton) {
+  loginButton.addEventListener('click', function() {
+    const enteredPassword = passwordInput.value;
+    const decodedPassword = atob("ZnV0dXJv"); // Decodifica a senha
+
+    if (enteredPassword === decodedPassword) {
+      loginForm.classList.add('hidden');
+      restrictedContent.classList.remove('hidden');
+      errorMessage.style.display = 'none';
+    } else {
+      errorMessage.textContent = 'Senha incorreta. Tente novamente.';
+      errorMessage.style.display = 'block';
       }
     });
   }
